@@ -1,0 +1,1817 @@
+[
+ {
+  "id": "0001",
+  "set": "dm-01",
+  "name": "Hanusa, Radiance Elemental",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 7,
+  "race": "Angel Command",
+  "power": 9500,
+  "power_text": "9500",
+  "rules_text": [
+   "Double breaker (This creature breaks 2 shields.)"
+  ],
+  "image": "https://img.duelmasters.us/0001.webp"
+ },
+ {
+  "id": "0002",
+  "set": "dm-01",
+  "name": "Urth, Purifying Elemental",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 6,
+  "race": "Angel Command",
+  "power": 6000,
+  "power_text": "6000",
+  "rules_text": [
+   "Double breaker (This creature breaks 2 shields.)",
+   "At the end of each of your turns, you may untap this creature."
+  ],
+  "image": "https://img.duelmasters.us/0002.webp"
+ },
+ {
+  "id": "0003",
+  "set": "dm-01",
+  "name": "Aqua Sniper",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 8,
+  "race": "Liquid People",
+  "power": 5000,
+  "power_text": "5000",
+  "rules_text": [
+   "When you put this creature into the battle zone, choose up to 2 creatures in the battle zone and return them to their owners' hands."
+  ],
+  "image": "https://img.duelmasters.us/0003.webp"
+ },
+ {
+  "id": "0004",
+  "set": "dm-01",
+  "name": "King Depthcon",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 7,
+  "race": "Leviathan",
+  "power": 6000,
+  "power_text": "6000",
+  "rules_text": [
+   "Double breaker (This creature breaks 2 shields.)",
+   "This creature can't be blocked."
+  ],
+  "image": "https://img.duelmasters.us/0004.webp"
+ },
+ {
+  "id": "0005",
+  "set": "dm-01",
+  "name": "Deathliger, Lion of Chaos",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 7,
+  "race": "Demon Command",
+  "power": 9000,
+  "power_text": "9000",
+  "rules_text": [
+   "Double breaker (This creature breaks 2 shields.)"
+  ],
+  "image": "https://img.duelmasters.us/0005.webp"
+ },
+ {
+  "id": "0006",
+  "set": "dm-01",
+  "name": "Zagaan, Knight of Darkness",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 6,
+  "race": "Demon Command",
+  "power": 7000,
+  "power_text": "7000",
+  "rules_text": [
+   "Double breaker (This creature breaks 2 shields.)"
+  ],
+  "image": "https://img.duelmasters.us/0006.webp"
+ },
+ {
+  "id": "0007",
+  "set": "dm-01",
+  "name": "Astrocomet Dragon",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 7,
+  "race": "Armored Dragon",
+  "power": 6000,
+  "power_text": "6000",
+  "rules_text": [
+   "Power attacker +4000 (While attacking, this creature gets +4000 power.)",
+   "Double breaker (This creature breaks 2 shields.)"
+  ],
+  "image": "https://img.duelmasters.us/0007.webp"
+ },
+ {
+  "id": "0008",
+  "set": "dm-01",
+  "name": "Scarlet Skyterror",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 8,
+  "race": "Armored Wyvern",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "When you put this creature into the battle zone, destroy all creatures that have \"blocker\"."
+  ],
+  "image": "https://img.duelmasters.us/0008.webp"
+ },
+ {
+  "id": "0009",
+  "set": "dm-01",
+  "name": "Deathblade Beetle",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Giant Insect",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "Power attacker +4000 (While attacking, this creature gets +4000 power.)",
+   "Double breaker (This creature breaks 2 shields.)"
+  ],
+  "image": "https://img.duelmasters.us/0009.webp"
+ },
+ {
+  "id": "0010",
+  "set": "dm-01",
+  "name": "Roaring Great-Horn",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 7,
+  "race": "Horned Beast",
+  "power": 8000,
+  "power_text": "8000",
+  "rules_text": [
+   "Power attacker +2000 (While attacking, this creature gets +2000 power.)",
+   "Double breaker (This creature breaks 2 shields.)"
+  ],
+  "image": "https://img.duelmasters.us/0010.webp"
+ },
+ {
+  "id": "0011",
+  "set": "dm-01",
+  "name": "Chilias, the Oracle",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Light Bringer",
+  "power": 2500,
+  "power_text": "2500",
+  "rules_text": [
+   "When this creature would be destroyed, put it into your hand instead."
+  ],
+  "image": "https://img.duelmasters.us/0011.webp"
+ },
+ {
+  "id": "0012",
+  "set": "dm-01",
+  "name": "Dia Nork, Moonlight Guardian",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Guardian",
+  "power": 5000,
+  "power_text": "5000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)",
+   "This creature can't attack players."
+  ],
+  "image": "https://img.duelmasters.us/0012.webp"
+ },
+ {
+  "id": "0013",
+  "set": "dm-01",
+  "name": "Emerald Grass",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 2,
+  "race": "Starlight Tree",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)",
+   "This creature can't attack players."
+  ],
+  "image": "https://img.duelmasters.us/0013.webp"
+ },
+ {
+  "id": "0014",
+  "set": "dm-01",
+  "name": "Frei, Vizier of Air",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Initiate",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "At the end of each of your turns, you may untap this creature."
+  ],
+  "image": "https://img.duelmasters.us/0014.webp"
+ },
+ {
+  "id": "0015",
+  "set": "dm-01",
+  "name": "Gran Gure, Space Guardian",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 6,
+  "race": "Guardian",
+  "power": 9000,
+  "power_text": "9000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)",
+   "This creature can't attack players."
+  ],
+  "image": "https://img.duelmasters.us/0015.webp"
+ },
+ {
+  "id": "0016",
+  "set": "dm-01",
+  "name": "Holy Awe",
+  "civilization": "Light",
+  "type": "Spell",
+  "cost": 6,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Shield trigger (When this card is put into your hand from your shield zone, you may play it immediately for no cost.)",
+   "Tap all your opponent's creatures in the battle zone."
+  ],
+  "image": "https://img.duelmasters.us/0016.webp"
+ },
+ {
+  "id": "0017",
+  "set": "dm-01",
+  "name": "Iere, Vizier of Bullets",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Initiate",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [],
+  "image": "https://img.duelmasters.us/0017.webp"
+ },
+ {
+  "id": "0018",
+  "set": "dm-01",
+  "name": "Iocant, the Oracle",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 2,
+  "race": "Light Bringer",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)",
+   "While you have at least 1 Angel Command in the battle zone, this creature gets +2000 power.",
+   "This creature can't attack players."
+  ],
+  "image": "https://img.duelmasters.us/0018.webp"
+ },
+ {
+  "id": "0019",
+  "set": "dm-01",
+  "name": "La Ura Giga, Sky Guardian",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 1,
+  "race": "Guardian",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)",
+   "This creature can't attack players."
+  ],
+  "image": "https://img.duelmasters.us/0019.webp"
+ },
+ {
+  "id": "0020",
+  "set": "dm-01",
+  "name": "Lah, Purification Enforcer",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Berserker",
+  "power": 5500,
+  "power_text": "5500",
+  "rules_text": [],
+  "image": "https://img.duelmasters.us/0020.webp"
+ },
+ {
+  "id": "0021",
+  "set": "dm-01",
+  "name": "Laser Wing",
+  "civilization": "Light",
+  "type": "Spell",
+  "cost": 5,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Choose up to 2 of your creatures in the battle zone. They can't be blocked this turn."
+  ],
+  "image": "https://img.duelmasters.us/0021.webp"
+ },
+ {
+  "id": "0022",
+  "set": "dm-01",
+  "name": "Lok, Vizier of Hunting",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Initiate",
+  "power": 4000,
+  "power_text": "4000",
+  "rules_text": [],
+  "image": "https://img.duelmasters.us/0022.webp"
+ },
+ {
+  "id": "0023",
+  "set": "dm-01",
+  "name": "Miele, Vizier of Lightning",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Initiate",
+  "power": 1000,
+  "power_text": "1000",
+  "rules_text": [
+   "When you put this creature into the battle zone, you may choose one of your opponent's creatures in the battle zone and tap it."
+  ],
+  "image": "https://img.duelmasters.us/0023.webp"
+ },
+ {
+  "id": "0024",
+  "set": "dm-01",
+  "name": "Moonlight Flash",
+  "civilization": "Light",
+  "type": "Spell",
+  "cost": 4,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Choose up to 2 of your opponent's creatures in the battle zone and tap them."
+  ],
+  "image": "https://img.duelmasters.us/0024.webp"
+ },
+ {
+  "id": "0025",
+  "set": "dm-01",
+  "name": "Rayla, Truth Enforcer",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 6,
+  "race": "Berserker",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "When you put this creature into the battle zone, search your deck. You may take a spell from your deck, show that spell to your opponent, and put it into your hand. Then shuffle your deck."
+  ],
+  "image": "https://img.duelmasters.us/0025.webp"
+ },
+ {
+  "id": "0026",
+  "set": "dm-01",
+  "name": "Reusol, the Oracle",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 2,
+  "race": "Light Bringer",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [],
+  "image": "https://img.duelmasters.us/0026.webp"
+ },
+ {
+  "id": "0027",
+  "set": "dm-01",
+  "name": "Ruby Grass",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Starlight Tree",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)",
+   "This creature can't attack players.",
+   "At the end of each of your turns, you may untap this creature."
+  ],
+  "image": "https://img.duelmasters.us/0027.webp"
+ },
+ {
+  "id": "0028",
+  "set": "dm-01",
+  "name": "Senatine Jade Tree",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Starlight Tree",
+  "power": 4000,
+  "power_text": "4000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)",
+   "This creature can't attack players."
+  ],
+  "image": "https://img.duelmasters.us/0028.webp"
+ },
+ {
+  "id": "0029",
+  "set": "dm-01",
+  "name": "Solar Ray",
+  "civilization": "Light",
+  "type": "Spell",
+  "cost": 2,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Shield trigger (When this card is put into your hand from your shield zone, you may play it immediately for no cost.)",
+   "Choose one of your opponent's creatures in the battle zone and tap it."
+  ],
+  "image": "https://img.duelmasters.us/0029.webp"
+ },
+ {
+  "id": "0030",
+  "set": "dm-01",
+  "name": "Sonic Wing",
+  "civilization": "Light",
+  "type": "Spell",
+  "cost": 3,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Choose one of your creatures in the battle zone. It can't be blocked this turn."
+  ],
+  "image": "https://img.duelmasters.us/0030.webp"
+ },
+ {
+  "id": "0031",
+  "set": "dm-01",
+  "name": "Szubs Kin, Twilight Guardian",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Guardian",
+  "power": 6000,
+  "power_text": "6000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)",
+   "This creature can't attack players."
+  ],
+  "image": "https://img.duelmasters.us/0031.webp"
+ },
+ {
+  "id": "0032",
+  "set": "dm-01",
+  "name": "Toel, Vizier of Hope",
+  "civilization": "Light",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Initiate",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [
+   "At the end of each of your turns, you may untap all your creatures in the battle zone."
+  ],
+  "image": "https://img.duelmasters.us/0032.webp"
+ },
+ {
+  "id": "0033",
+  "set": "dm-01",
+  "name": "Aqua Hulcus",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Liquid People",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [
+   "When you put this creature into the battle zone, you may draw a card."
+  ],
+  "image": "https://img.duelmasters.us/0033.webp"
+ },
+ {
+  "id": "0034",
+  "set": "dm-01",
+  "name": "Aqua Knight",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Liquid People",
+  "power": 4000,
+  "power_text": "4000",
+  "rules_text": [
+   "When this creature would be destroyed, return it to your hand instead."
+  ],
+  "image": "https://img.duelmasters.us/0034.webp"
+ },
+ {
+  "id": "0035",
+  "set": "dm-01",
+  "name": "Aqua Soldier",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Liquid People",
+  "power": 1000,
+  "power_text": "1000",
+  "rules_text": [
+   "When this creature would be destroyed, return it to your hand instead."
+  ],
+  "image": "https://img.duelmasters.us/0035.webp"
+ },
+ {
+  "id": "0036",
+  "set": "dm-01",
+  "name": "Aqua Vehicle",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 2,
+  "race": "Liquid People",
+  "power": 1000,
+  "power_text": "1000",
+  "rules_text": [],
+  "image": "https://img.duelmasters.us/0036.webp"
+ },
+ {
+  "id": "0037",
+  "set": "dm-01",
+  "name": "Brain Serum",
+  "civilization": "Water",
+  "type": "Spell",
+  "cost": 4,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Shield trigger (When this card is put into your hand from your shield zone, you may play it immediately for no cost.)",
+   "Draw up to 2 cards."
+  ],
+  "image": "https://img.duelmasters.us/0037.webp"
+ },
+ {
+  "id": "0038",
+  "set": "dm-01",
+  "name": "Candy Drop",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Cyber Virus",
+  "power": 1000,
+  "power_text": "1000",
+  "rules_text": [
+   "This creature can't be blocked."
+  ],
+  "image": "https://img.duelmasters.us/0038.webp"
+ },
+ {
+  "id": "0039",
+  "set": "dm-01",
+  "name": "Crystal Memory",
+  "civilization": "Water",
+  "type": "Spell",
+  "cost": 4,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Shield trigger (When this card is put into your hand from your shield zone, you may play it immediately for no cost.)",
+   "Search your deck. You may take a card from your deck and put it into your hand. Then shuffle your deck."
+  ],
+  "image": "https://img.duelmasters.us/0039.webp"
+ },
+ {
+  "id": "0040",
+  "set": "dm-01",
+  "name": "Faerie Child",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Cyber Virus",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [
+   "This creature can't be blocked."
+  ],
+  "image": "https://img.duelmasters.us/0040.webp"
+ },
+ {
+  "id": "0041",
+  "set": "dm-01",
+  "name": "Hunter Fish",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 2,
+  "race": "Fish",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)",
+   "This creature can't attack."
+  ],
+  "image": "https://img.duelmasters.us/0041.webp"
+ },
+ {
+  "id": "0042",
+  "set": "dm-01",
+  "name": "Illusionary Merfolk",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Gel Fish",
+  "power": 4000,
+  "power_text": "4000",
+  "rules_text": [
+   "When you put this creature into the battle zone, if you have a Cyber Lord in the battle zone, draw up to 3 cards."
+  ],
+  "image": "https://img.duelmasters.us/0042.webp"
+ },
+ {
+  "id": "0043",
+  "set": "dm-01",
+  "name": "King Coral",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Leviathan",
+  "power": 1000,
+  "power_text": "1000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)"
+  ],
+  "image": "https://img.duelmasters.us/0043.webp"
+ },
+ {
+  "id": "0044",
+  "set": "dm-01",
+  "name": "King Ripped-Hide",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 7,
+  "race": "Leviathan",
+  "power": 5000,
+  "power_text": "5000",
+  "rules_text": [
+   "When you put this creature into the battle zone, draw up to 2 cards."
+  ],
+  "image": "https://img.duelmasters.us/0044.webp"
+ },
+ {
+  "id": "0045",
+  "set": "dm-01",
+  "name": "Marine Flower",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 1,
+  "race": "Cyber Virus",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)",
+   "This creature can't attack."
+  ],
+  "image": "https://img.duelmasters.us/0045.webp"
+ },
+ {
+  "id": "0046",
+  "set": "dm-01",
+  "name": "Phantom Fish",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Gel Fish",
+  "power": 4000,
+  "power_text": "4000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)",
+   "This creature can't attack."
+  ],
+  "image": "https://img.duelmasters.us/0046.webp"
+ },
+ {
+  "id": "0047",
+  "set": "dm-01",
+  "name": "Revolver Fish",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Gel Fish",
+  "power": 5000,
+  "power_text": "5000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)",
+   "This creature can't attack."
+  ],
+  "image": "https://img.duelmasters.us/0047.webp"
+ },
+ {
+  "id": "0048",
+  "set": "dm-01",
+  "name": "Saucer-Head Shark",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Gel Fish",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "When you put this creature into the battle zone, return all creatures in the battle zone that have power 2000 or less to its owner's hand."
+  ],
+  "image": "https://img.duelmasters.us/0048.webp"
+ },
+ {
+  "id": "0049",
+  "set": "dm-01",
+  "name": "Seamine",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 6,
+  "race": "Fish",
+  "power": 4000,
+  "power_text": "4000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)"
+  ],
+  "image": "https://img.duelmasters.us/0049.webp"
+ },
+ {
+  "id": "0050",
+  "set": "dm-01",
+  "name": "Spiral Gate",
+  "civilization": "Water",
+  "type": "Spell",
+  "cost": 2,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Shield trigger (When this card is put into your hand from your shield zone, you may play it immediately for no cost.)",
+   "Choose a creature in the battle zone and return it to its owner's hand."
+  ],
+  "image": "https://img.duelmasters.us/0050.webp"
+ },
+ {
+  "id": "0051",
+  "set": "dm-01",
+  "name": "Teleportation",
+  "civilization": "Water",
+  "type": "Spell",
+  "cost": 5,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Choose up to 2 creatures in the battle zone and return them to their owners' hands."
+  ],
+  "image": "https://img.duelmasters.us/0051.webp"
+ },
+ {
+  "id": "0052",
+  "set": "dm-01",
+  "name": "Tropico",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Cyber Lord",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "This creature can't be blocked while you have at least 2 other creatures in the battle zone."
+  ],
+  "image": "https://img.duelmasters.us/0052.webp"
+ },
+ {
+  "id": "0053",
+  "set": "dm-01",
+  "name": "Unicorn Fish",
+  "civilization": "Water",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Fish",
+  "power": 1000,
+  "power_text": "1000",
+  "rules_text": [
+   "When you put this creature into the battle zone, you may choose 1 creature in the battle zone and return it to its owner's hand."
+  ],
+  "image": "https://img.duelmasters.us/0053.webp"
+ },
+ {
+  "id": "0054",
+  "set": "dm-01",
+  "name": "Virtual Tripwire",
+  "civilization": "Water",
+  "type": "Spell",
+  "cost": 3,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Choose one of your opponent's creatures in the battle zone and tap it."
+  ],
+  "image": "https://img.duelmasters.us/0054.webp"
+ },
+ {
+  "id": "0055",
+  "set": "dm-01",
+  "name": "Black Feather, Shadow of Rage",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 1,
+  "race": "Ghost",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "When you put this creature into the battle zone, destroy one of your creatures."
+  ],
+  "image": "https://img.duelmasters.us/0055.webp"
+ },
+ {
+  "id": "0056",
+  "set": "dm-01",
+  "name": "Bloody Squito",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 2,
+  "race": "Brain Jacker",
+  "power": 4000,
+  "power_text": "4000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)",
+   "This creature can't attack.",
+   "When this creature wins a battle, destroy it."
+  ],
+  "image": "https://img.duelmasters.us/0056.webp"
+ },
+ {
+  "id": "0057",
+  "set": "dm-01",
+  "name": "Bone Assassin, the Ripper",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Living Dead",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [
+   "Slayer (When this creature loses a battle, destroy the other creature.)"
+  ],
+  "image": "https://img.duelmasters.us/0057.webp"
+ },
+ {
+  "id": "0058",
+  "set": "dm-01",
+  "name": "Bone Spider",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Living Dead",
+  "power": 5000,
+  "power_text": "5000",
+  "rules_text": [
+   "When this creature wins a battle, destroy it."
+  ],
+  "image": "https://img.duelmasters.us/0058.webp"
+ },
+ {
+  "id": "0059",
+  "set": "dm-01",
+  "name": "Creeping Plague",
+  "civilization": "Darkness",
+  "type": "Spell",
+  "cost": 1,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Whenever any of your creatures becomes blocked this turn, it gets \"slayer\" until the end of the turn. (When a creature that has \"slayer\" loses a battle, destroy the other creature.)"
+  ],
+  "image": "https://img.duelmasters.us/0059.webp"
+ },
+ {
+  "id": "0060",
+  "set": "dm-01",
+  "name": "Dark Clown",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Brain Jacker",
+  "power": 6000,
+  "power_text": "6000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)",
+   "This creature can't attack.",
+   "When this creature wins a battle, destroy it."
+  ],
+  "image": "https://img.duelmasters.us/0060.webp"
+ },
+ {
+  "id": "0061",
+  "set": "dm-01",
+  "name": "Dark Raven, Shadow of Grief",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Ghost",
+  "power": 1000,
+  "power_text": "1000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)"
+  ],
+  "image": "https://img.duelmasters.us/0061.webp"
+ },
+ {
+  "id": "0062",
+  "set": "dm-01",
+  "name": "Dark Reversal",
+  "civilization": "Darkness",
+  "type": "Spell",
+  "cost": 2,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Shield trigger (When this card is put into your hand from your shield zone, you may play it immediately for no cost.)",
+   "Return a creature from your graveyard to your hand."
+  ],
+  "image": "https://img.duelmasters.us/0062.webp"
+ },
+ {
+  "id": "0063",
+  "set": "dm-01",
+  "name": "Death Smoke",
+  "civilization": "Darkness",
+  "type": "Spell",
+  "cost": 4,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Destroy one of your opponent's untapped creatures."
+  ],
+  "image": "https://img.duelmasters.us/0063.webp"
+ },
+ {
+  "id": "0064",
+  "set": "dm-01",
+  "name": "Ghost Touch",
+  "civilization": "Darkness",
+  "type": "Spell",
+  "cost": 2,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Shield trigger (When this card is put into your hand from your shield zone, you may play it immediately for no cost.)",
+   "Your opponent discards a card at random from his hand."
+  ],
+  "image": "https://img.duelmasters.us/0064.webp"
+ },
+ {
+  "id": "0065",
+  "set": "dm-01",
+  "name": "Gigaberos",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Chimera",
+  "power": 8000,
+  "power_text": "8000",
+  "rules_text": [
+   "When you put this creature into the battle zone, destroy 2 of your creatures or destroy this creature.",
+   "Double breaker (This creature breaks 2 shields.)"
+  ],
+  "image": "https://img.duelmasters.us/0065.webp"
+ },
+ {
+  "id": "0066",
+  "set": "dm-01",
+  "name": "Gigagiele",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Chimera",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "Slayer (When this creature loses a battle, destroy the other creature.)"
+  ],
+  "image": "https://img.duelmasters.us/0066.webp"
+ },
+ {
+  "id": "0067",
+  "set": "dm-01",
+  "name": "Gigargon",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 8,
+  "race": "Chimera",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "When you put this creature into the battle zone, return up to 2 creatures from your graveyard to your hand."
+  ],
+  "image": "https://img.duelmasters.us/0067.webp"
+ },
+ {
+  "id": "0068",
+  "set": "dm-01",
+  "name": "Masked Horror, Shadow of Scorn",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Ghost",
+  "power": 1000,
+  "power_text": "1000",
+  "rules_text": [
+   "When you put this creature into the battle zone, your opponent discards a card at random from his hand."
+  ],
+  "image": "https://img.duelmasters.us/0068.webp"
+ },
+ {
+  "id": "0069",
+  "set": "dm-01",
+  "name": "Night Master, Shadow of Decay",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 6,
+  "race": "Ghost",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)"
+  ],
+  "image": "https://img.duelmasters.us/0069.webp"
+ },
+ {
+  "id": "0070",
+  "set": "dm-01",
+  "name": "Skeleton Soldier, the Defiled",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Living Dead",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [],
+  "image": "https://img.duelmasters.us/0070.webp"
+ },
+ {
+  "id": "0071",
+  "set": "dm-01",
+  "name": "Stinger Worm",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Parasite Worm",
+  "power": 5000,
+  "power_text": "5000",
+  "rules_text": [
+   "When you put this creature into the battle zone, destroy one of your creatures."
+  ],
+  "image": "https://img.duelmasters.us/0071.webp"
+ },
+ {
+  "id": "0072",
+  "set": "dm-01",
+  "name": "Swamp Worm",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 7,
+  "race": "Parasite Worm",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [
+   "When you put this creature into the battle zone, your opponent chooses one of his creatures and destroys it."
+  ],
+  "image": "https://img.duelmasters.us/0072.webp"
+ },
+ {
+  "id": "0073",
+  "set": "dm-01",
+  "name": "Terror Pit",
+  "civilization": "Darkness",
+  "type": "Spell",
+  "cost": 6,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Shield trigger (When this card is put into your hand from your shield zone, you may play it immediately for no cost.)",
+   "Destroy one of your opponent's creatures."
+  ],
+  "image": "https://img.duelmasters.us/0073.webp"
+ },
+ {
+  "id": "0074",
+  "set": "dm-01",
+  "name": "Vampire Silphy",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 8,
+  "race": "Dark Lord",
+  "power": 4000,
+  "power_text": "4000",
+  "rules_text": [
+   "When you put this creature into the battle zone, destroy all creatures that have power 3000 or less."
+  ],
+  "image": "https://img.duelmasters.us/0074.webp"
+ },
+ {
+  "id": "0075",
+  "set": "dm-01",
+  "name": "Wandering Braineater",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 2,
+  "race": "Living Dead",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [
+   "Blocker (Whenever an opponent's creature attacks, you may tap this creature to stop the attack. Then the 2 creatures battle.)",
+   "This creature can't attack."
+  ],
+  "image": "https://img.duelmasters.us/0075.webp"
+ },
+ {
+  "id": "0076",
+  "set": "dm-01",
+  "name": "Writhing Bone Ghoul",
+  "civilization": "Darkness",
+  "type": "Creature",
+  "cost": 2,
+  "race": "Living Dead",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [],
+  "image": "https://img.duelmasters.us/0076.webp"
+ },
+ {
+  "id": "0077",
+  "set": "dm-01",
+  "name": "Armored Walker Urherion",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Armorloid",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "While you have at least 1 Human in the battle zone, this creature gets +2000 power during its attacks."
+  ],
+  "image": "https://img.duelmasters.us/0077.webp"
+ },
+ {
+  "id": "0078",
+  "set": "dm-01",
+  "name": "Artisan Picora",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 1,
+  "race": "Machine Eater",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [
+   "When you put this creature into the battle zone, put 1 card from your mana zone into your graveyard."
+  ],
+  "image": "https://img.duelmasters.us/0078.webp"
+ },
+ {
+  "id": "0079",
+  "set": "dm-01",
+  "name": "Bolshack Dragon",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 6,
+  "race": "Armored Dragon",
+  "power": 6000,
+  "power_text": "6000",
+  "rules_text": [
+   "While attacking, this creature gets +1000 power for each fire card in your graveyard.",
+   "Double breaker (This creature breaks 2 shields.)"
+  ],
+  "image": "https://img.duelmasters.us/0079.webp"
+ },
+ {
+  "id": "0080",
+  "set": "dm-01",
+  "name": "Brawler Zyler",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 2,
+  "race": "Human",
+  "power": 1000,
+  "power_text": "1000",
+  "rules_text": [
+   "Power attacker +2000 (While attacking, this creature gets +2000 power.)"
+  ],
+  "image": "https://img.duelmasters.us/0080.webp"
+ },
+ {
+  "id": "0081",
+  "set": "dm-01",
+  "name": "Burning Power",
+  "civilization": "Fire",
+  "type": "Spell",
+  "cost": 1,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "One of your creatures gets \"power attacker +2000\" until the end of the turn. (While attacking, a creature that has \"power attacker +2000\" gets +2000 power.)"
+  ],
+  "image": "https://img.duelmasters.us/0081.webp"
+ },
+ {
+  "id": "0082",
+  "set": "dm-01",
+  "name": "Chaos Strike",
+  "civilization": "Fire",
+  "type": "Spell",
+  "cost": 2,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Choose 1 of your opponent's untapped creatures in the battle zone. Your creatures can attack it this turn as though it were tapped."
+  ],
+  "image": "https://img.duelmasters.us/0082.webp"
+ },
+ {
+  "id": "0083",
+  "set": "dm-01",
+  "name": "Crimson Hammer",
+  "civilization": "Fire",
+  "type": "Spell",
+  "cost": 2,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Destroy 1 of your opponent's creatures that has power 2000 or less."
+  ],
+  "image": "https://img.duelmasters.us/0083.webp"
+ },
+ {
+  "id": "0084",
+  "set": "dm-01",
+  "name": "Deadly Fighter Braid Claw",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 1,
+  "race": "Dragonoid",
+  "power": 1000,
+  "power_text": "1000",
+  "rules_text": [
+   "This creature attacks each turn if able."
+  ],
+  "image": "https://img.duelmasters.us/0084.webp"
+ },
+ {
+  "id": "0085",
+  "set": "dm-01",
+  "name": "Draglide",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Dragonoid",
+  "power": 5000,
+  "power_text": "5000",
+  "rules_text": [
+   "This creature attacks each turn if able."
+  ],
+  "image": "https://img.duelmasters.us/0085.webp"
+ },
+ {
+  "id": "0086",
+  "set": "dm-01",
+  "name": "Explosive Fighter Ucarn",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Dragonoid",
+  "power": 9000,
+  "power_text": "9000",
+  "rules_text": [
+   "When you put this creature into the battle zone, put 2 cards from your mana zone into your graveyard.",
+   "Double breaker (This creature breaks 2 shields.)"
+  ],
+  "image": "https://img.duelmasters.us/0086.webp"
+ },
+ {
+  "id": "0087",
+  "set": "dm-01",
+  "name": "Fatal Attacker Horvath",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Human",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [
+   "While you have at least 1 Armorloid in the battle zone, this creature gets +2000 power during its attacks."
+  ],
+  "image": "https://img.duelmasters.us/0087.webp"
+ },
+ {
+  "id": "0088",
+  "set": "dm-01",
+  "name": "Fire Sweeper Burning Hellion",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Dragonoid",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "Power attacker +2000 (While attacking, this creature gets +2000 power.)"
+  ],
+  "image": "https://img.duelmasters.us/0088.webp"
+ },
+ {
+  "id": "0089",
+  "set": "dm-01",
+  "name": "Gatling Skyterror",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 7,
+  "race": "Armored Wyvern",
+  "power": 7000,
+  "power_text": "7000",
+  "rules_text": [
+   "This creature can attack untapped creatures.",
+   "Double breaker (This creature breaks 2 shields.)"
+  ],
+  "image": "https://img.duelmasters.us/0089.webp"
+ },
+ {
+  "id": "0090",
+  "set": "dm-01",
+  "name": "Immortal Baron, Vorg",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 2,
+  "race": "Human",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [],
+  "image": "https://img.duelmasters.us/0090.webp"
+ },
+ {
+  "id": "0091",
+  "set": "dm-01",
+  "name": "Magma Gazer",
+  "civilization": "Fire",
+  "type": "Spell",
+  "cost": 3,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "One of your creatures gets \"power attacker +4000\" and \"double breaker\" until the end of the turn. (A creature that has \"power attacker +4000\" and \"double breaker\" gets +4000 power while attacking and breaks 2 shields.)"
+  ],
+  "image": "https://img.duelmasters.us/0091.webp"
+ },
+ {
+  "id": "0092",
+  "set": "dm-01",
+  "name": "Meteosaur",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Rock Beast",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [
+   "When you put this creature into the battle zone, destroy one of your opponent's creatures that has power 2000 or less."
+  ],
+  "image": "https://img.duelmasters.us/0092.webp"
+ },
+ {
+  "id": "0093",
+  "set": "dm-01",
+  "name": "Nomad Hero Gigio",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Machine Eater",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "This creature can attack untapped creatures."
+  ],
+  "image": "https://img.duelmasters.us/0093.webp"
+ },
+ {
+  "id": "0094",
+  "set": "dm-01",
+  "name": "Onslaughter Triceps",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Dragonoid",
+  "power": 5000,
+  "power_text": "5000",
+  "rules_text": [
+   "When you put this creature into the battle zone, put 1 card from your mana zone into your graveyard."
+  ],
+  "image": "https://img.duelmasters.us/0094.webp"
+ },
+ {
+  "id": "0095",
+  "set": "dm-01",
+  "name": "Rothus, the Traveler",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Armorloid",
+  "power": 4000,
+  "power_text": "4000",
+  "rules_text": [
+   "When you put this creature into the battle zone, destroy one of your creatures. Then your opponent chooses one of his creatures and destroys it."
+  ],
+  "image": "https://img.duelmasters.us/0095.webp"
+ },
+ {
+  "id": "0096",
+  "set": "dm-01",
+  "name": "Stonesaur",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Rock Beast",
+  "power": 4000,
+  "power_text": "4000",
+  "rules_text": [
+   "Power attacker +2000 (While attacking, this creature gets +2000 power.)"
+  ],
+  "image": "https://img.duelmasters.us/0096.webp"
+ },
+ {
+  "id": "0097",
+  "set": "dm-01",
+  "name": "Super Explosive Volcanodon",
+  "civilization": "Fire",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Dragonoid",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [
+   "Power attacker +4000 (While attacking, this creature gets +4000 power.)"
+  ],
+  "image": "https://img.duelmasters.us/0097.webp"
+ },
+ {
+  "id": "0098",
+  "set": "dm-01",
+  "name": "Tornado Flame",
+  "civilization": "Fire",
+  "type": "Spell",
+  "cost": 5,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Shield trigger (When this card is put into your hand from your shield zone, you may play it immediately for no cost.)",
+   "Destroy one of your opponent's creatures that has power 4000 or less."
+  ],
+  "image": "https://img.duelmasters.us/0098.webp"
+ },
+ {
+  "id": "0099",
+  "set": "dm-01",
+  "name": "Aura Blast",
+  "civilization": "Nature",
+  "type": "Spell",
+  "cost": 4,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Each of your creatures in the battle zone gets \"power attacker +2000\" until the end of the turn. (While attacking, a creature that has \"power attacker +2000\" gets +2000 power.)"
+  ],
+  "image": "https://img.duelmasters.us/0099.webp"
+ },
+ {
+  "id": "0100",
+  "set": "dm-01",
+  "name": "Bronze-Arm Tribe",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Beast Folk",
+  "power": 1000,
+  "power_text": "1000",
+  "rules_text": [
+   "When you put this creature into the battle zone, put the top card of your deck into your mana zone."
+  ],
+  "image": "https://img.duelmasters.us/0100.webp"
+ },
+ {
+  "id": "0101",
+  "set": "dm-01",
+  "name": "Burning Mane",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 2,
+  "race": "Beast Folk",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [],
+  "image": "https://img.duelmasters.us/0101.webp"
+ },
+ {
+  "id": "0102",
+  "set": "dm-01",
+  "name": "Coiling Vines",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Tree Folk",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "When this creature would be destroyed, put it into your mana zone instead."
+  ],
+  "image": "https://img.duelmasters.us/0102.webp"
+ },
+ {
+  "id": "0103",
+  "set": "dm-01",
+  "name": "Dimension Gate",
+  "civilization": "Nature",
+  "type": "Spell",
+  "cost": 3,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Shield trigger (When this card is put into your hand from your shield zone, you may play it immediately for no cost.)",
+   "Search your deck. You may take a creature from your deck, show that creature to your opponent, and put it into your hand. Then shuffle your deck."
+  ],
+  "image": "https://img.duelmasters.us/0103.webp"
+ },
+ {
+  "id": "0104",
+  "set": "dm-01",
+  "name": "Dome Shell",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Colony Beetle",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "Power attacker +2000 (While attacking, this creature gets +2000 power.)"
+  ],
+  "image": "https://img.duelmasters.us/0104.webp"
+ },
+ {
+  "id": "0105",
+  "set": "dm-01",
+  "name": "Fear Fang",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Beast Folk",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [],
+  "image": "https://img.duelmasters.us/0105.webp"
+ },
+ {
+  "id": "0106",
+  "set": "dm-01",
+  "name": "Forest Hornet",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Giant Insect",
+  "power": 4000,
+  "power_text": "4000",
+  "rules_text": [],
+  "image": "https://img.duelmasters.us/0106.webp"
+ },
+ {
+  "id": "0107",
+  "set": "dm-01",
+  "name": "Golden Wing Striker",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Beast Folk",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [
+   "Power attacker +2000 (While attacking, this creature gets +2000 power.)"
+  ],
+  "image": "https://img.duelmasters.us/0107.webp"
+ },
+ {
+  "id": "0108",
+  "set": "dm-01",
+  "name": "Mighty Shouter",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 3,
+  "race": "Beast Folk",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [
+   "When this creature would be destroyed, put it into your mana zone instead."
+  ],
+  "image": "https://img.duelmasters.us/0108.webp"
+ },
+ {
+  "id": "0109",
+  "set": "dm-01",
+  "name": "Natural Snare",
+  "civilization": "Nature",
+  "type": "Spell",
+  "cost": 6,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Shield trigger (When this card is put into your hand from your shield zone, you may play it immediately for no cost.)",
+   "Choose one of your opponent's creatures in the battle zone and put it into his mana zone."
+  ],
+  "image": "https://img.duelmasters.us/0109.webp"
+ },
+ {
+  "id": "0110",
+  "set": "dm-01",
+  "name": "Pangaea's Song",
+  "civilization": "Nature",
+  "type": "Spell",
+  "cost": 1,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Put 1 of your creatures from the battle zone into your mana zone."
+  ],
+  "image": "https://img.duelmasters.us/0110.webp"
+ },
+ {
+  "id": "0111",
+  "set": "dm-01",
+  "name": "Poisonous Dahlia",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 4,
+  "race": "Tree Folk",
+  "power": 5000,
+  "power_text": "5000",
+  "rules_text": [
+   "This creature can't attack players."
+  ],
+  "image": "https://img.duelmasters.us/0111.webp"
+ },
+ {
+  "id": "0112",
+  "set": "dm-01",
+  "name": "Poisonous Mushroom",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 2,
+  "race": "Balloon Mushroom",
+  "power": 1000,
+  "power_text": "1000",
+  "rules_text": [
+   "When you put this creature into the battle zone, you may put 1 card from your hand into your mana zone."
+  ],
+  "image": "https://img.duelmasters.us/0112.webp"
+ },
+ {
+  "id": "0113",
+  "set": "dm-01",
+  "name": "Red-Eye Scorpion",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Giant Insect",
+  "power": 4000,
+  "power_text": "4000",
+  "rules_text": [
+   "When this creature would be destroyed, put it into your mana zone instead."
+  ],
+  "image": "https://img.duelmasters.us/0113.webp"
+ },
+ {
+  "id": "0114",
+  "set": "dm-01",
+  "name": "Stampeding Longhorn",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Horned Beast",
+  "power": 4000,
+  "power_text": "4000",
+  "rules_text": [
+   "This creature can't be blocked by any creature that has power 3000 or less."
+  ],
+  "image": "https://img.duelmasters.us/0114.webp"
+ },
+ {
+  "id": "0115",
+  "set": "dm-01",
+  "name": "Steel Smasher",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 2,
+  "race": "Beast Folk",
+  "power": 3000,
+  "power_text": "3000",
+  "rules_text": [
+   "This creature can't attack players."
+  ],
+  "image": "https://img.duelmasters.us/0115.webp"
+ },
+ {
+  "id": "0116",
+  "set": "dm-01",
+  "name": "Storm Shell",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 7,
+  "race": "Colony Beetle",
+  "power": 2000,
+  "power_text": "2000",
+  "rules_text": [
+   "When you put this creature into the battle zone, your opponent chooses one of his creatures in the battle zone and puts it into his mana zone."
+  ],
+  "image": "https://img.duelmasters.us/0116.webp"
+ },
+ {
+  "id": "0117",
+  "set": "dm-01",
+  "name": "Thorny Mandra",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Tree Folk",
+  "power": 4000,
+  "power_text": "4000",
+  "rules_text": [
+   "When you put this creature into the battle zone, you may put 1 creature from your graveyard into your mana zone."
+  ],
+  "image": "https://img.duelmasters.us/0117.webp"
+ },
+ {
+  "id": "0118",
+  "set": "dm-01",
+  "name": "Tower Shell",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 6,
+  "race": "Colony Beetle",
+  "power": 5000,
+  "power_text": "5000",
+  "rules_text": [
+   "This creature can't be blocked by any creature that has power 4000 or less."
+  ],
+  "image": "https://img.duelmasters.us/0118.webp"
+ },
+ {
+  "id": "0119",
+  "set": "dm-01",
+  "name": "Tri-horn Shepherd",
+  "civilization": "Nature",
+  "type": "Creature",
+  "cost": 5,
+  "race": "Horned Beast",
+  "power": 5000,
+  "power_text": "5000",
+  "rules_text": [],
+  "image": "https://img.duelmasters.us/0119.webp"
+ },
+ {
+  "id": "0120",
+  "set": "dm-01",
+  "name": "Ultimate Force",
+  "civilization": "Nature",
+  "type": "Spell",
+  "cost": 5,
+  "race": null,
+  "power": null,
+  "power_text": null,
+  "rules_text": [
+   "Put the top 2 cards of your deck into your mana zone."
+  ],
+  "image": "https://img.duelmasters.us/0120.webp"
+ }
+]

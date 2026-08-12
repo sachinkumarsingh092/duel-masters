@@ -1,0 +1,296 @@
+@font-face { font-family: "DMNum"; src: url(/static/fonts/Anton.ttf) format("truetype");
+  font-weight: 400; font-display: swap; }
+@font-face { font-family: "DMTitle"; src: url(/static/fonts/Cinzel-Bold.ttf) format("truetype");
+  font-weight: 700; font-display: swap; }
+@font-face { font-family: "DMTitle"; src: url(/static/fonts/Cinzel-Black.ttf) format("truetype");
+  font-weight: 900; font-display: swap; }
+
+* { box-sizing: border-box; margin: 0; }
+:root { --card-w: 72px;   /* every card, every zone, same size */
+  --card-h: calc(var(--card-w) * 88 / 63);            /* TCG aspect ratio */
+  --rot-gap: calc((var(--card-h) - var(--card-w)) / 2); /* room a 90deg card needs */
+  --font-num: "DMNum", "Arial Narrow", Impact, sans-serif;   /* card power numbers */
+  --font-title: "DMTitle", "Trajan Pro", Georgia, serif;     /* card name feel */
+  --font-ui: "Trebuchet MS", -apple-system, "Segoe UI", sans-serif; }
+body {
+  font-family: var(--font-ui);
+  color: #f2f5ff; min-height: 100vh; background: #0b2413; overflow: hidden;
+}
+h1 { margin-bottom: 16px; font-family: var(--font-title); font-weight: 900;
+  letter-spacing: .04em; }
+h1 .sub { font-size: 15px; color: #d9a86b; letter-spacing: .25em; text-transform: uppercase; }
+
+/* ------------------------------------------------------------- setup panel */
+.panel { max-width: 680px; margin: 60px auto; background: linear-gradient(170deg,#1d4a2c,#0f2b18);
+  padding: 28px; border-radius: 14px; border: 2px solid #d9a86b;
+  box-shadow: 0 10px 60px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.15); }
+.setup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+.setup-grid label { display: flex; flex-direction: column; font-size: 13px; gap: 4px; color: #a9cdb4; }
+select, input { background: #0d2416; color: #e8f5ec; border: 1px solid #2f6440;
+  border-radius: 6px; padding: 8px; font-size: 14px; }
+button, select, input, textarea { font-family: var(--font-ui); }
+button { cursor: pointer; border-radius: 8px; padding: 8px 14px; font-size: 14px;
+  background: linear-gradient(180deg,#2f7440,#1c4a28); color: #fff;
+  border: 1px solid #74b285; text-shadow: 0 1px 2px #000; }
+button:hover { filter: brightness(1.25); }
+button.big { font-size: 17px; padding: 12px 26px; margin-top: 10px;
+  background: linear-gradient(180deg,#e0b070,#9c6428); border-color: #f4d9a8; }
+.error { color: #ff9a8a; margin-top: 10px; min-height: 1em; }
+#s-deck-info { font-size: 12px; color: #8fc0a0; margin: 6px 0; white-space: pre-line; }
+
+/* --------------------------------------------------------- the green mat */
+#board {
+  position: fixed; inset: 0; padding: 4px 8px;
+  display: grid; grid-template-rows: 46px 118px 118px 1fr 118px 118px 110px; row-gap: 3px;
+  background:
+    radial-gradient(ellipse 68% 58% at 50% 45%, #3f9152 0%, #2f7440 38%, #205733 62%, #143a20 82%, #0b2413 100%);
+}
+#board::before { /* matte felt finish: fine grain + subtle fabric weave */
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.016) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(-45deg, rgba(0,0,0,.02) 0 1px, transparent 1px 3px);
+  opacity: .5; mix-blend-mode: soft-light;
+}
+#board::after { /* corner vignette for depth */
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background: radial-gradient(ellipse 85% 80% at 50% 46%, transparent 55%,
+    rgba(2, 10, 4, .38) 85%, rgba(1, 6, 2, .6) 100%);
+}
+
+/* ---------------------------------------------------- bands (play zones) */
+/* zones read as slightly worn areas of the same felt — no printed lines */
+.band { position: relative; margin: 0 6px; border-radius: 14px;
+  background: rgba(0, 12, 5, .13);
+  border: 1px solid transparent;
+  transition: box-shadow .2s, background .2s, border-color .2s; }
+.band.droppable { border-color: rgba(255, 224, 102, .8);
+  box-shadow: 0 0 20px rgba(255, 224, 102, .3) inset, 0 0 16px rgba(255, 224, 102, .35); }
+.band.drag-over { background: rgba(255, 224, 102, .13); }
+
+.mana-band { display: flex; align-items: center; gap: 6px; padding: 8px 14px;
+  overflow-x: auto; }
+.mana-card { width: var(--card-w); border-radius: 4px; flex-shrink: 0;
+  transition: transform .15s; cursor: pointer; }
+.mana-card img { width: 100%; border-radius: 4px; display: block; }
+.mana-card.tapped { transform: rotate(90deg); margin: 0 var(--rot-gap);
+  filter: grayscale(.8) brightness(.6); }
+
+.shield-band { display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 14px; }
+.shield-fan { display: flex; flex: 1; justify-content: center; align-items: center; }
+
+.shieldcard { width: var(--card-w); aspect-ratio: 63 / 88; border-radius: 5px;
+  margin: 0 10px; border: 1px solid #090909;
+  background: url(/static/card-back.webp) center / cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,.65), 0 0 14px rgba(110, 190, 255, .28);
+  transition: box-shadow .3s; }
+.shieldcard:hover { box-shadow: 0 4px 10px rgba(0,0,0,.65),
+  0 0 22px rgba(130, 205, 255, .5); }
+
+/* ------------------------------------------------------------ battle band */
+#battle-band { display: flex; flex-direction: column; justify-content: space-around; }
+#battle-watermark { position: absolute; inset: 0;
+  background: url(/static/duel-masters-logo.png) center / auto min(88%, 480px) no-repeat;
+  mix-blend-mode: multiply; opacity: .34; filter: blur(0.75px);
+  pointer-events: none; user-select: none; }
+.battle-row { display: flex; gap: 26px; align-items: center; justify-content: center;
+  min-height: 118px; z-index: 1; border-radius: 8px; }
+.battle-row.droppable { border: 1.5px solid #ffe066;
+  box-shadow: 0 0 20px rgba(255,224,102,.35) inset, 0 0 16px rgba(255,224,102,.4); }
+.battle-row.drag-over { background: rgba(255, 224, 102, .14); }
+
+.card { position: relative; width: var(--card-w);
+  transition: transform .18s, filter .18s; cursor: pointer; border-radius: 6px; }
+.card img { width: 100%; border-radius: 6px; display: block;
+  box-shadow: 0 1px 3px rgba(0,0,0,.7), 0 6px 16px rgba(0,0,0,.45); }
+.battle-row .card:hover, .mana-card:hover { transform: translateY(-4px); }
+.battle-row .card.tapped:hover { transform: rotate(90deg) translateX(-4px); }
+.mana-card.tapped:hover { transform: rotate(90deg); }
+.card.tapped { transform: rotate(90deg); margin: 0 var(--rot-gap); }
+.card.sick::after { content: "💤"; position: absolute; top: 2px; right: 2px; font-size: 15px; }
+.card.actionable, .mana-card.actionable {
+  box-shadow: 0 0 0 3px #ffe066, 0 0 22px 4px rgba(255, 224, 102, .6); }
+.card.droppable { box-shadow: 0 0 0 3px #ff9d4e, 0 0 22px 4px rgba(255,150,60,.7); }
+.card.dragging { opacity: .35; }
+.card .pw { position: absolute; left: 50%; bottom: -11px; transform: translateX(-50%);
+  font-family: var(--font-num); font-size: 20px; letter-spacing: .01em;
+  color: #fff; white-space: nowrap; line-height: 1;
+  /* the cards' white power numerals with a hard dark outline */
+  -webkit-text-stroke: 3px #10130f; paint-order: stroke fill;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,.85)); }
+.card.tapped .pw { transform: translateX(-50%) rotate(-90deg); bottom: auto; top: 50%;
+  left: -14px; }
+
+/* --------------------------------------------------------------- piles */
+.side-piles { display: flex; gap: 12px; align-items: center; }
+/* mirrors the width of .side-piles (2 piles + gap) so both shield fans
+   center on the same axis and shields sit exactly opposite each other */
+.pile-spacer { width: calc(2 * (var(--card-w) + 16px) + 12px); flex-shrink: 0; }
+.pile { position: relative; width: calc(var(--card-w) + 16px); height: 100%;
+  min-height: 100px; border-radius: 12px;
+  border: 1px solid transparent; background: rgba(0, 12, 5, .15);
+  display: flex; align-items: center; justify-content: center; }
+.pilecard { width: var(--card-w); aspect-ratio: 63 / 88; border-radius: 5px;
+  position: relative; border: 1px solid #090909;
+  background: url(/static/card-back.webp) center / cover;
+  box-shadow: 2px 2px 0 rgba(5, 12, 7, .9), 4px 4px 0 rgba(3, 8, 5, .8),
+    0 6px 14px rgba(0,0,0,.6); }
+.pilecard.gravepile { filter: grayscale(.55) brightness(.85); overflow: hidden;
+  cursor: pointer; background: #10241a; }
+.pilecard.gravepile img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+.pilecard.empty { opacity: .25; box-shadow: none; background: rgba(10,19,56,.4); }
+.pile .count { position: absolute; bottom: 2px; right: 4px;
+  font-family: var(--font-num); font-size: 17px; color: #fff; line-height: 1;
+  -webkit-text-stroke: 3px #10130f; paint-order: stroke fill;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.8)); }
+
+/* ----------------------------------------------------------- player HUDs */
+#opp-strip, #bottom-strip { display: flex; align-items: center; gap: 12px;
+  padding: 2px 10px; z-index: 20; }
+
+.bronze { display: flex; align-items: center; gap: 10px; padding: 5px 14px;
+  border-radius: 22px;
+  background: linear-gradient(180deg,#dfb079 0%,#b07a3c 42%,#8a5423 58%,#c08d52 100%);
+  border: 2px solid #4a2c10; outline: 1px solid #f4d9a8;
+  box-shadow: 0 4px 12px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.5); }
+.chip { display: flex; align-items: center; gap: 6px;
+  font-family: var(--font-num); font-size: 17px; color: #fff; line-height: 1;
+  -webkit-text-stroke: 2.5px #10130f; paint-order: stroke fill; }
+.chip .ico { font-size: 15px; filter: drop-shadow(0 1px 1px #000); }
+.chip .handback { width: 15px; border-radius: 2px; border: 1px solid rgba(0,0,0,.6);
+  box-shadow: 0 1px 3px rgba(0,0,0,.5); display: block; }
+.orbs { display: flex; gap: 7px; padding-left: 10px;
+  border-left: 2px solid rgba(74,44,16,.55); }
+.orb { position: relative; width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at 50% 40%, rgba(12, 20, 14, .9), rgba(4, 9, 6, .95));
+  border: 1.5px solid rgba(0,0,0,.6); box-shadow: 0 2px 5px rgba(0,0,0,.55); }
+.orb img { width: 78%; height: 78%; object-fit: contain; }
+.orb .n { position: absolute; bottom: -6px; right: -6px; text-align: center;
+  font-family: var(--font-num); font-size: 15px; color: #fff; line-height: 1;
+  -webkit-text-stroke: 3px #10130f; paint-order: stroke fill; }
+.orb.dim { opacity: .45; }
+.orb.dim img { filter: grayscale(.7) brightness(.7); }
+/* per-civilization glow so the bright symbols pop */
+.orb-Light img   { filter: drop-shadow(0 0 4px rgba(255, 224, 80, .9)); }
+.orb-Water img   { filter: drop-shadow(0 0 4px rgba(70, 180, 255, .9)); }
+.orb-Darkness img{ filter: drop-shadow(0 0 4px rgba(190, 150, 255, .8)); }
+.orb-Fire img    { filter: drop-shadow(0 0 4px rgba(255, 90, 40, .9)); }
+.orb-Nature img  { filter: drop-shadow(0 0 4px rgba(90, 230, 90, .9)); }
+.orb.dim.orb-Light img, .orb.dim.orb-Water img, .orb.dim.orb-Darkness img,
+.orb.dim.orb-Fire img, .orb.dim.orb-Nature img {
+  filter: grayscale(.7) brightness(.7); }
+
+#ticker { flex: 1; min-width: 0; text-align: right; font-size: 12.5px;
+  font-style: italic; color: rgba(240, 250, 242, .8); text-shadow: 0 1px 2px #000;
+  overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+  padding: 0 58px 0 16px; }
+
+/* ------------------------------------------------- hand (own grid row) */
+#bottom-strip { z-index: 25; }
+#my-hand { display: flex; justify-content: center; align-items: flex-start;
+  margin: 0 auto; }
+#hand-spacer { width: 210px; }  /* balances the HUD bar so the hand centers */
+#my-hand .card { margin: 0 -8px; transform-origin: 50% 130%; }
+#my-hand .card:hover { transform: translateY(-26px) scale(1.5) rotate(0deg) !important;
+  z-index: 40; }
+body.dragging #my-hand .card:not(.dragging) { pointer-events: none; }
+
+/* --------------------------------------------------- floating action panel */
+/* ---------------------------------------- end turn + interrupt dialog */
+#end-turn { position: fixed; right: 22px; bottom: 30px; z-index: 46;
+  padding: 8px 20px; border-radius: 999px; font-size: 12px; font-weight: 700;
+  font-family: var(--font-title); letter-spacing: .16em;
+  background: rgba(5, 20, 11, .82); backdrop-filter: blur(8px);
+  border: 1px solid rgba(233, 216, 168, .5); color: #e9d8a8;
+  box-shadow: 0 4px 14px rgba(0,0,0,.4);
+  transition: border-color .15s, color .15s, opacity .2s; }
+#end-turn:hover:not(:disabled) { border-color: #ffe066; color: #fff3c4;
+  filter: none; }
+#end-turn:disabled { cursor: default; opacity: .45; color: #9fb8a6;
+  border-color: rgba(160, 180, 165, .3); }
+
+#interrupt { position: fixed; left: 18px; top: 50%; transform: translateY(-50%);
+  z-index: 60; width: 268px;
+  background: rgba(5, 20, 11, .88); border: 1px solid rgba(233, 216, 168, .65);
+  border-radius: 14px; padding: 14px 18px; backdrop-filter: blur(8px);
+  box-shadow: 0 16px 50px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.08);
+  animation: interruptin .16s ease-out; }
+@keyframes interruptin { from { opacity: 0; }
+  to { opacity: 1; } }
+#prompt { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: #ffe066;
+  font-style: italic; text-align: center; }
+#options { display: flex; flex-direction: column; gap: 6px;
+  max-height: 46vh; overflow-y: auto;
+  scrollbar-width: thin; scrollbar-color: #2f6440 transparent; }
+#options button { font-size: 12.5px; border-radius: 999px; padding: 7px 14px;
+  text-align: left;
+  background: linear-gradient(180deg, rgba(42,96,58,.95), rgba(18,48,28,.95));
+  border: 1px solid rgba(140, 195, 155, .6);
+  transition: border-color .15s, transform .1s, box-shadow .15s; }
+#options button:hover { border-color: #ffe066; color: #fff3c4;
+  transform: translateY(-1px); box-shadow: 0 3px 12px rgba(0,0,0,.4); }
+.mana-band { scrollbar-width: thin; scrollbar-color: #2f6440 transparent; }
+#log { scrollbar-width: thin; scrollbar-color: #2f6440 transparent; }
+
+/* --------------------------------------------------------------- log */
+#log-toggle { position: absolute; top: 8px; right: 12px; z-index: 60; font-size: 17px;
+  padding: 5px 10px; }
+#log-panel { position: fixed; right: 0; top: 0; bottom: 0; width: 320px; z-index: 55;
+  display: flex; flex-direction: column; gap: 8px; padding: 46px 10px 10px;
+  background: rgba(5, 16, 9, .96); border-left: 2px solid #d9a86b;
+  box-shadow: -6px 0 24px rgba(0,0,0,.6); }
+#log { flex: 1; background: rgba(0,0,0,.4); border-radius: 10px; padding: 9px;
+  font-size: 12px; overflow-y: auto; line-height: 1.5; border: 1px solid #2b6340; }
+#log .turnhead { color: #ffe066; font-weight: 800; margin-top: 4px; }
+#log .ai { color: #7ee0c0; }
+
+/* --------------------------------------------------------- card modal */
+#card-modal { position: fixed; inset: 0; z-index: 80; background: rgba(3, 10, 5, .75);
+  backdrop-filter: blur(5px);
+  display: flex; align-items: center; justify-content: center; }
+#card-modal-img { animation: cardpop .18s ease-out; }
+@keyframes cardpop { from { transform: scale(.92); opacity: .4; }
+  to { transform: scale(1); opacity: 1; } }
+#card-modal-body { display: flex; gap: 18px; align-items: center; }
+#card-modal-img { width: min(420px, 40vw); border-radius: 16px;
+  box-shadow: 0 24px 80px rgba(0,0,0,.9), 0 0 60px rgba(255,224,102,.15); }
+#card-modal-actions { display: flex; flex-direction: column; gap: 8px; max-width: 300px; }
+#card-modal-actions button { font-size: 13px; text-align: left; border-radius: 999px;
+  padding: 8px 16px;
+  background: linear-gradient(180deg, rgba(42,96,58,.95), rgba(18,48,28,.95));
+  border: 1px solid rgba(140, 195, 155, .6);
+  transition: border-color .15s, transform .1s, box-shadow .15s; }
+#card-modal-actions button:hover { border-color: #ffe066; color: #fff3c4;
+  transform: translateX(2px); box-shadow: 0 3px 12px rgba(0,0,0,.4); }
+#card-modal-actions .hint { font-size: 12px; color: #9fc9ac; font-style: italic; }
+
+/* ------------------------------------------------------------ game over */
+#gameover { position: fixed; inset: 0; background: rgba(3, 10, 5, .85);
+  backdrop-filter: blur(6px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  z-index: 100; }
+#gameover-text { font-family: var(--font-title); font-size: 46px; font-weight: 900;
+  text-shadow: 0 0 30px rgba(255,200,80,.6), 0 4px 8px #000; margin-bottom: 18px; }
+
+/* ------------------------------------------- zone spread (hand / graveyard) */
+#spread { position: fixed; inset: 0; z-index: 90; background: rgba(3, 10, 5, .82);
+  backdrop-filter: blur(6px); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 18px; padding: 40px; }
+#spread-title { font-family: var(--font-title); font-weight: 700; font-size: 15px;
+  letter-spacing: .2em; text-transform: uppercase; color: #e9d8a8;
+  text-shadow: 0 2px 6px #000; }
+#spread-cards { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
+  align-items: center; max-width: 1180px; max-height: 76vh; overflow-y: auto;
+  padding: 6px; scrollbar-width: thin; scrollbar-color: #2f6440 transparent; }
+.spread-card { width: 188px; border-radius: 10px; cursor: pointer;
+  transition: transform .15s, box-shadow .15s; animation: cardpop .2s ease-out; }
+.spread-card img { width: 100%; border-radius: 10px; display: block;
+  box-shadow: 0 8px 26px rgba(0,0,0,.7); }
+.spread-card:hover { transform: translateY(-6px) scale(1.03); }
+.spread-card.actionable { box-shadow: 0 0 0 3px #ffe066, 0 0 26px 5px rgba(255,224,102,.5);
+  border-radius: 10px; }
+.chip.clickable { cursor: pointer; transition: filter .15s; }
+.chip.clickable:hover { filter: brightness(1.3) drop-shadow(0 0 6px rgba(255,224,102,.7)); }

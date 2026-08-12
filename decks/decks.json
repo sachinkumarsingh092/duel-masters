@@ -1,0 +1,60 @@
+{
+  "Blazing Speed": {
+    "description": "Fire/Nature aggro — cheap attackers, burn removal, finish with dragons.",
+    "cards": {
+      "Deadly Fighter Braid Claw": 4,
+      "Immortal Baron, Vorg": 4,
+      "Brawler Zyler": 4,
+      "Burning Mane": 4,
+      "Bronze-Arm Tribe": 4,
+      "Fire Sweeper Burning Hellion": 4,
+      "Stonesaur": 3,
+      "Bolshack Dragon": 2,
+      "Tornado Flame": 4,
+      "Crimson Hammer": 3,
+      "Magma Gazer": 2,
+      "Natural Snare": 2
+    }
+  },
+  "Guardians of Light": {
+    "description": "Light/Water control — wall of blockers, card draw, unblockable finishers.",
+    "cards": {
+      "La Ura Giga, Sky Guardian": 4,
+      "Emerald Grass": 4,
+      "Aqua Hulcus": 3,
+      "Senatine Jade Tree": 3,
+      "Dia Nork, Moonlight Guardian": 2,
+      "Candy Drop": 2,
+      "Faerie Child": 3,
+      "Szubs Kin, Twilight Guardian": 2,
+      "Gran Gure, Space Guardian": 2,
+      "Urth, Purifying Elemental": 2,
+      "Hanusa, Radiance Elemental": 1,
+      "King Depthcon": 1,
+      "Solar Ray": 4,
+      "Spiral Gate": 2,
+      "Brain Serum": 3,
+      "Holy Awe": 2
+    }
+  },
+  "Shadow Legion": {
+    "description": "Darkness/Nature midrange — removal, slayers, hand attack, big finishers.",
+    "cards": {
+      "Writhing Bone Ghoul": 4,
+      "Bloody Squito": 4,
+      "Bronze-Arm Tribe": 4,
+      "Stinger Worm": 2,
+      "Bone Assassin, the Ripper": 2,
+      "Skeleton Soldier, the Defiled": 3,
+      "Gigagiele": 2,
+      "Fear Fang": 2,
+      "Zagaan, Knight of Darkness": 2,
+      "Deathliger, Lion of Chaos": 2,
+      "Ghost Touch": 4,
+      "Death Smoke": 3,
+      "Terror Pit": 3,
+      "Dark Reversal": 2,
+      "Vampire Silphy": 1
+    }
+  }
+}

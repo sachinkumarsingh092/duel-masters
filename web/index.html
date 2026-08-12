@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duel Masters — Battle Arena</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="/static/app.js" defer></script>
+</head>
+<body>
+<div id="boot" class="panel">
+  <h1>⚔️ Duel Masters <span class="sub">Battle Arena</span></h1>
+  <div id="boot-status">Shuffling random decks…</div>
+  <div id="boot-error" class="error"></div>
+</div>
+
+<div id="board" style="display:none">
+  <button id="log-toggle" title="game log">📜</button>
+
+  <div id="opp-strip">
+    <div class="bronze" id="opp-stats"></div>
+    <div id="ticker"></div>
+  </div>
+
+  <div class="band mana-band" id="opp-mana" data-label="mana zone"></div>
+  <div class="band shield-band" id="opp-shield-band" data-label="shield zone">
+    <div class="side-piles">
+      <div class="pile" id="opp-grave" data-label="graveyard"></div>
+      <div class="pile" id="opp-deck" data-label="deck"></div>
+    </div>
+    <div class="shield-fan" id="opp-shield-zone"></div>
+    <div class="pile-spacer"></div>
+  </div>
+
+  <div class="band" id="battle-band" data-label="battle zone">
+    <div id="battle-watermark"></div>
+    <div class="battle-row" id="opp-battle"></div>
+    <div class="battle-row" id="my-battle"></div>
+  </div>
+
+  <div class="band shield-band" id="my-shield-band" data-label="shield zone">
+    <div class="pile-spacer"></div>
+    <div class="shield-fan" id="my-shield-zone"></div>
+    <div class="side-piles">
+      <div class="pile" id="my-deck" data-label="deck"></div>
+      <div class="pile" id="my-grave" data-label="graveyard"></div>
+    </div>
+  </div>
+  <div class="band mana-band" id="my-mana" data-label="mana zone"></div>
+
+  <div id="bottom-strip">
+    <div class="bronze" id="my-stats"></div>
+    <div id="my-hand"></div>
+    <div id="hand-spacer"></div>
+  </div>
+
+  <button id="end-turn" disabled>END TURN</button>
+  <div id="interrupt" style="display:none">
+    <div id="prompt"></div>
+    <div id="options"></div>
+  </div>
+
+  <div id="log-panel" style="display:none">
+    <div id="log"></div>
+    <button id="new-game">New game</button>
+  </div>
+
+  <div id="card-modal" style="display:none">
+    <div id="card-modal-body">
+      <img id="card-modal-img" alt="">
+      <div id="card-modal-actions"></div>
+    </div>
+  </div>
+
+  <div id="spread" style="display:none">
+    <div id="spread-title"></div>
+    <div id="spread-cards"></div>
+  </div>
+
+  <div id="gameover" style="display:none"><div id="gameover-text"></div>
+    <button onclick="location.assign('/')" class="big">Play again</button></div>
+</div>
+</body>
+</html>
