@@ -31,11 +31,20 @@ whatever they battle, win or lose.
 - A player with no shields loses when the next attack connects. Drawing from \
 an empty deck loses.
 
-YOU ARE PLAYING TO WIN. Be aggressive. The most common losing mistake is \
-passing the turn with unspent mana or with attacks available.
+YOU ARE PLAYING TO WIN. Be aggressive. The two losing mistakes are passing \
+the turn with mana unspent, and attacking before you have finished summoning.
+
+TURN SEQUENCE — DO IT IN THIS ORDER, EVERY TURN:
+  (1) charge one card into mana  (2) summon/cast everything you can afford  \
+(3) then attack with everything that profitably can.
+ATTACKING ENDS YOUR MAIN STEP. The moment you declare your first attack you \
+may not play any more cards this turn, so a creature left in hand is wasted. \
+The ONLY exception: if an attack wins the game right now, attack immediately.
 
 STRATEGY PLAYBOOK
-1. Charge exactly one mana per turn. Charge a card you're least likely to cast.
+1. Charge exactly one card per turn — that mana is usable immediately, so \
+charge BEFORE summoning. Charge a card you're least likely to cast, and \
+prefer a civilization missing from your mana zone.
 2. NEVER end your turn with mana unspent if you can summon a creature. Board \
 presence wins this game. Play on curve EVERY turn.
 3. Attack every turn you profitably can. A creature that never attacks does \
@@ -217,9 +226,17 @@ def tactical_brief(game, idx: int) -> dict:
 
     brief["affordable_plays"] = plays
     brief["attacks_available"] = attacks
-    if plays and brief["your_untapped_mana"]:
-        brief["WARNING"] = (f"You have {brief['your_untapped_mana']} untapped mana and "
-                            f"{len(plays)} affordable card(s). Ending the turn wastes them.")
+    if any(o.kind == "charge" for o in options):
+        brief["you_have_NOT_charged_mana_this_turn"] = True
+    if plays:
+        cards = ", ".join(p["card"] for p in plays)
+        brief["ORDER_OF_PLAY"] = (
+            f"You can still summon/cast: {cards}. Attacking ENDS your main step, so "
+            f"do all of that FIRST, then attack. Ending the turn now wastes "
+            f"{brief['your_untapped_mana']} untapped mana.")
+    elif attacks:
+        brief["ORDER_OF_PLAY"] = ("Nothing left to play — attack with everything that "
+                                  "profitably can, then end the turn.")
     return brief
 
 
@@ -240,18 +257,126 @@ def _forced_choice(game, idx: int, options):
     return None
 
 
+HOSTILE_VERBS = ("destroy", "tap ", "return", "send to graveyard",
+                 "put into mana", "mark", "discard")
+
+
+def _spell_is_dead(game, idx: int, c) -> bool:
+    """Would this spell do nothing? Casting it just throws the card away."""
+    if c.d.type != "Spell":
+        return False
+    text = " ".join(c.d.rules_text).lower()
+    mine, theirs = game.players[idx].battle, game.opponent_of(idx).battle
+    needs_mine = "your creature" in text or "your creatures" in text
+    needs_theirs = "opponent's creature" in text or "opponent's creatures" in text
+    if needs_mine and not needs_theirs and not mine:
+        return True
+    if needs_theirs and not needs_mine and not theirs:
+        return True
+    return False
+
+
+def _target_is_good(game, idx: int, o) -> bool:
+    """Never destroy your own creature or buff theirs when picking a target."""
+    c = game.find(o.data.get("iid")) if o.data.get("iid") is not None else None
+    if not c:
+        return True
+    hostile = any(o.text.lower().startswith(v.strip()) for v in HOSTILE_VERBS)
+    return hostile != (c.owner == idx)
+
+
+def _block_is_good(game, idx: int, o) -> bool:
+    """Block when the blocker kills the attacker or lives through it."""
+    b = game.find(o.data.get("iid"))
+    if not b:
+        return False
+    m = re.search(r"\((\d+)\) is attacking", game.pending.prompt or "")
+    if not m:
+        return True
+    apow, bpow = int(m.group(1)), game.power(b)
+    return bpow > apow or game.has_slayer(b) or bpow >= apow
+
+
 def _priority(game, idx: int, o) -> int:
-    """Aggressive options first: models are biased toward the top of a list."""
+    """Recommended order. Charged mana is usable the same turn, and attacking
+    ENDS the main step (the engine stops offering plays), so every summon has
+    to come before the first attack. Only a game-winning swing jumps the queue."""
     opp = game.opponent_of(idx)
     if o.kind == "attack":
         if o.data.get("target") == "player":
-            return 0 if not opp.shields else 2
+            if not opp.shields:
+                return 0                  # closing the game beats developing
+            return 7                      # break shields once done summoning
         a, t = game.find(o.data["iid"]), game.find(o.data.get("target"))
         if a and t and game.power(a, attacking=True) > game.power(t):
-            return 1                      # free removal
-        return 4
-    return {"use_trigger": 0, "block": 1, "target": 1, "play": 3,
-            "charge": 5, "done": 6, "skip_trigger": 7, "end_turn": 9}.get(o.kind, 4)
+            return 6                      # free removal, still after summoning
+        return 8                          # unfavorable trade
+    if o.kind == "play":
+        c = game.find(o.data["iid"])
+        if c is None:
+            return 5
+        if _spell_is_dead(game, idx, c):
+            return 11                     # worse than doing nothing
+        return 4 if c.d.type == "Creature" else 5
+    if o.kind == "target":
+        return 2 if _target_is_good(game, idx, o) else 11
+    if o.kind == "block":
+        return 2 if _block_is_good(game, idx, o) else 11
+    return {"use_trigger": 1, "yes": 2, "count": 2, "charge": 3,
+            "no_block": 9, "done": 9, "skip_trigger": 9,
+            "end_turn": 10}.get(o.kind, 5)
+
+
+def _charge_score(game, idx: int, o):
+    """Which card to turn into mana: cover a missing civilization first, then
+    the card you're least likely to cast (can't afford it soon, costs most)."""
+    me = game.players[idx]
+    c = game.find(o.data["iid"])
+    if not c:
+        return (9, 9, 0)
+    have_civs = {m.d.civilization for m in me.mana}
+    castable_soon = (c.d.cost or 0) <= len(me.mana) + 1
+    return (0 if c.d.civilization not in have_civs else 1,
+            1 if castable_soon else 0,
+            -(c.d.cost or 0))
+
+
+def heuristic_choice(game, idx: int) -> int:
+    """Plays a competent turn with no model at all: forced wins, then
+    charge -> summon -> attack."""
+    options = game.pending.options
+    forced = _forced_choice(game, idx, options)
+    if forced:
+        return forced[0]
+
+    def key(o):
+        p = _priority(game, idx, o)
+        if o.kind == "charge":
+            return (p,) + _charge_score(game, idx, o) + (o.id,)
+        if o.kind == "play":
+            c = game.find(o.data["iid"])
+            return (p, -(c.d.cost or 0) if c else 0, 0, 0, o.id)
+        return (p, 0, 0, 0, o.id)
+    return min(options, key=key).id
+
+
+def _pushback(game, idx: int, chosen, brief) -> str | None:
+    """One shove when the model is about to waste its turn."""
+    plays = brief.get("affordable_plays") or []
+    if chosen.kind == "end_turn" and brief.get("you_have_NOT_charged_mana_this_turn"):
+        return ("You are ending the turn without charging a card into your mana zone. "
+                "That is one mana you can never get back, and it is free — charge "
+                "something first (you may still act afterwards).")
+    if chosen.kind == "end_turn" and (plays or brief.get("attacks_available")):
+        return ("You ended the turn while you still have mana to spend or attacks "
+                "available — that wastes the whole turn. Re-read tactical_brief and "
+                "develop or attack instead unless every option is clearly bad.")
+    if chosen.kind == "attack" and plays and game.opponent_of(idx).shields:
+        names = ", ".join(str(p.get("card")) for p in plays)
+        return (f"Attacking ENDS your main step, so you would forfeit summoning "
+                f"{names} this turn. Summon everything you can afford FIRST, then "
+                f"attack with everything.")
+    return None
 
 
 async def choose_option(game, player_idx: int, cfg: LLMConfig) -> tuple[int, str]:
@@ -266,26 +391,22 @@ async def choose_option(game, player_idx: int, cfg: LLMConfig) -> tuple[int, str
     payload = {"state": compact_state(game, player_idx), "tactical_brief": brief}
     user = (f"You are '{game.players[player_idx].name}'.\n{json.dumps(payload)}\n\n"
             f"DECISION: {game.pending.prompt}\n"
-            "Legal options (strongest first):\n"
+            "Legal options (recommended order, best first):\n"
             + "\n".join(f"  {o.id}: {o.text}" for o in ordered)
             + '\n\nReply with JSON only: {"reason": "...", "option": <id>}')
     messages = [{"role": "user", "content": user}]
     by_id = {o.id: o for o in options}
-    can_develop = bool(brief.get("affordable_plays") or brief.get("attacks_available"))
     last_err = None
-    nudged = False
+    shoves = 0
 
-    for attempt in range(4):
+    for attempt in range(5):
         try:
             text = await _call(cfg, messages)
             opt_id, reason = _parse(text, set(by_id))
-            if (not nudged and can_develop and by_id[opt_id].kind == "end_turn"):
-                nudged = True   # one shove against passing the turn away
-                messages = [{"role": "user", "content": user +
-                             "\n\n(You chose to end the turn while you still have mana to "
-                             "spend or attacks available — that wastes the whole turn. "
-                             "Re-read tactical_brief and pick a developing or attacking "
-                             "move unless every single one is clearly bad. JSON only.)"}]
+            note = _pushback(game, player_idx, by_id[opt_id], brief)
+            if note and shoves < 2:
+                shoves += 1
+                messages = [{"role": "user", "content": f"{user}\n\n({note} JSON only.)"}]
                 continue
             return opt_id, reason
         except Exception as e:  # noqa: BLE001 - any failure -> retry then fallback
@@ -294,8 +415,8 @@ async def choose_option(game, player_idx: int, cfg: LLMConfig) -> tuple[int, str
                         attempt + 1, cfg.model, cfg.base_url, e)
             messages = [{"role": "user", "content": user + f"\n\n(Your previous reply "
                          f"was invalid: {e}. Reply with valid JSON and a legal option id.)"}]
-    fallback = max(options, key=lambda o: -_priority(game, player_idx, o))
-    return fallback.id, f"(LLM unreachable — heuristic move. Error: {last_err})"
+    return (heuristic_choice(game, player_idx),
+            f"(LLM unreachable — heuristic move. Error: {last_err})")
 
 
 def _parse(text: str, legal: set[int]) -> tuple[int, str]:
