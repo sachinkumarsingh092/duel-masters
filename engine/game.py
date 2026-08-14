@@ -497,4 +497,14 @@ class Game:
             if d.player == viewer:
                 out["pending"]["options"] = [
                     {"id": o.id, "text": o.text, "kind": o.kind, **o.data} for o in d.options]
+                # art for cards an option refers to that aren't on the table
+                # (deck searches, graveyard picks) so the UI can show them
+                cards = {}
+                for o in d.options:
+                    iid = o.data.get("iid")
+                    if isinstance(iid, int):
+                        inst = self.find(iid)
+                        if inst is not None:
+                            cards[str(iid)] = self.card_json(inst)
+                out["pending"]["option_cards"] = cards
         return out

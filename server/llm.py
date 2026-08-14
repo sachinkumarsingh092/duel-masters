@@ -303,11 +303,12 @@ def _priority(game, idx: int, o) -> int:
     to come before the first attack. Only a game-winning swing jumps the queue."""
     opp = game.opponent_of(idx)
     if o.kind == "attack":
+        a = game.find(o.data["iid"])
         if o.data.get("target") == "player":
             if not opp.shields:
                 return 0                  # closing the game beats developing
             return 7                      # break shields once done summoning
-        a, t = game.find(o.data["iid"]), game.find(o.data.get("target"))
+        t = game.find(o.data.get("target"))
         if a and t and game.power(a, attacking=True) > game.power(t):
             return 6                      # free removal, still after summoning
         return 8                          # unfavorable trade

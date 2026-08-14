@@ -46,7 +46,7 @@ function enterBoard() {
   $("card-modal").onclick = e => { if (e.target.id === "card-modal") closeModal(); };
   $("spread").onclick = e => { if (e.target.id !== "spread") return; closeSpread(); };
   document.addEventListener("keydown", e => {
-    if (e.key === "Escape") { closeModal(); closeSpread(); }
+    if (e.key === "Escape") { closeModal(); closeSpread(); }   // no-op if locked
   });
   poll(); POLL = setInterval(poll, 1200);
 }
@@ -110,25 +110,83 @@ function openModal(iid) {
 }
 function closeModal() { $("card-modal").style.display = "none"; }
 
-/* A readable spread of a whole zone (your hand, a graveyard). Cards are
-   shown big enough to read; clicking one opens it full-size with actions. */
+/* A readable spread of cards: a zone you're browsing (hand, graveyard) or a
+   set you must choose from (deck search, graveyard pick). Cards are shown big
+   enough to read and clicking one either opens it or answers the decision. */
+let SPREAD_LOCKED = false, SPREAD_SIG = null;
+
+function sizeSpread(n) {
+  const gap = 14;
+  if (n > 8) {                       // a deck search: comfortable grid, scrolls
+    $("spread-cards").style.setProperty("--spread-w", "158px");
+    return;
+  }
+  const byWidth = (window.innerWidth * 0.94 - gap * n) / n;
+  const byHeight = window.innerHeight * 0.74 * 63 / 88;
+  $("spread-cards").style.setProperty("--spread-w",
+    `${Math.round(Math.max(170, Math.min(360, byWidth, byHeight)))}px`);
+}
+
+function spreadCard(c, {caption = null, onPick = null} = {}) {
+  CARDS[c.iid] = c;
+  const d = document.createElement("div");
+  d.className = "spread-card";
+  const img = document.createElement("img");
+  img.src = c.image; img.alt = c.name; img.draggable = false;
+  d.appendChild(img);
+  if (caption) {
+    const cap = document.createElement("div");
+    cap.className = "spread-cap";
+    cap.textContent = caption;
+    d.appendChild(cap);
+  }
+  d.onclick = onPick || (() => { closeSpread(true); openModal(c.iid); });
+  return d;
+}
+
 function openSpread(title, cards) {
   if (!cards.length) return;
-  $("spread-title").textContent = `${title} — ${cards.length} card${cards.length > 1 ? "s" : ""}`;
+  SPREAD_LOCKED = false; SPREAD_SIG = null;
+  $("spread-title").textContent =
+    `${title} — ${cards.length} card${cards.length > 1 ? "s" : ""}`;
+  sizeSpread(cards.length);
   $("spread-cards").replaceChildren(...cards.map(c => {
-    CARDS[c.iid] = c;
-    const d = document.createElement("div");
-    d.className = "spread-card";
-    const img = document.createElement("img");
-    img.src = c.image; img.alt = c.name; img.draggable = false;
-    d.appendChild(img);
-    if (myOptions().some(o => o.iid === c.iid)) d.classList.add("actionable");
-    d.onclick = () => { closeSpread(); openModal(c.iid); };
-    return d;
+    const el = spreadCard(c);
+    if (myOptions().some(o => o.iid === c.iid)) el.classList.add("actionable");
+    return el;
+  }));
+  $("spread-actions").replaceChildren();
+  $("spread").style.display = "flex";
+}
+
+/* Choose one of a set of cards you can't click on the table. */
+function openCardChooser(prompt, cardOpts, pillOpts, cardsById) {
+  const sig = prompt + "|" + cardOpts.concat(pillOpts).map(o => o.id).join(",");
+  if (SPREAD_SIG === sig) return;         // already open for this decision
+  SPREAD_SIG = sig; SPREAD_LOCKED = true;
+  $("spread-title").textContent = prompt;
+  sizeSpread(cardOpts.length);
+  $("spread-cards").replaceChildren(...cardOpts.map(o => {
+    const c = cardsById[o.iid];
+    return spreadCard(c, {
+      caption: `${c.name}${c.cost != null ? ` · ${c.cost}` : ""}`,
+      onPick: () => { closeSpread(true); act(o.id); },
+    });
+  }));
+  $("spread-actions").replaceChildren(...pillOpts.map(o => {
+    const b = document.createElement("button");
+    b.textContent = o.text;
+    b.onclick = () => { closeSpread(true); act(o.id); };
+    return b;
   }));
   $("spread").style.display = "flex";
 }
-function closeSpread() { $("spread").style.display = "none"; }
+
+function closeSpread(force = false) {
+  if (SPREAD_LOCKED && !force) return;   // a required choice can't be dismissed
+  SPREAD_LOCKED = false; SPREAD_SIG = null;
+  $("spread").style.display = "none";
+}
 
 function cardEl(c, {battle = false, hand = false} = {}) {
   CARDS[c.iid] = c;
@@ -375,6 +433,17 @@ function renderOptions() {
   if (mine && p.kind !== "main") {
     const onBoard = new Set([...document.querySelectorAll(".card[data-iid], .mana-card[data-iid]")]
       .map(el => Number(el.dataset.iid)));
+    const art = p.option_cards || {};
+    // cards you can't click on the table (deck search, graveyard pick) get a
+    // full-size chooser instead of a list of names
+    const offTable = p.options.filter(o => o.iid != null && art[o.iid] && !onBoard.has(o.iid));
+    const rest = p.options.filter(o => !offTable.includes(o));
+    if (offTable.length) {
+      openCardChooser(p.prompt, offTable, rest, art);
+      $("interrupt").style.display = "none";
+      return;
+    }
+    closeSpread(true);
     const pills = p.options.filter(o => !(o.iid != null && onBoard.has(o.iid)));
     $("prompt").textContent = p.prompt +
       (pills.length < p.options.length ? " (click a highlighted card)" : "");
@@ -386,6 +455,7 @@ function renderOptions() {
     }));
     $("interrupt").style.display = "block";
   } else {
+    closeSpread(true);
     $("interrupt").style.display = "none";
   }
 

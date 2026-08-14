@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import asyncio
 import os
+import random
 import sys
 import uuid
 from pathlib import Path
@@ -71,7 +72,9 @@ async def new_game(req: NewGame = NewGame()):
     provider = _resolve_provider(req.provider)
     ai_name = req.ai_name if provider != "none" else "Player 2"
     try:
-        g = Game([deck_list(req.player_deck), deck_list(req.ai_deck)],
+        # one rng for both decks so a seed reproduces the whole game
+        rng = random.Random(req.seed)
+        g = Game([deck_list(req.player_deck, rng), deck_list(req.ai_deck, rng)],
                  names=("Player 1", ai_name), seed=req.seed)
     except (KeyError, ValueError) as e:
         raise HTTPException(400, str(e))
